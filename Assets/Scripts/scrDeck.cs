@@ -40,17 +40,16 @@ public class scrDeck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        test -= Time.deltaTime;
-        if (test < 0)
+        
+        if (theDeck.Count < 5)
         {
-            drawCards();
-            test = 50000;
+            DeckShuffle();
         }
     }
 
     void DeckShuffle()
     {
-        
+        theDeck.Clear();
 
         theDeck.Add(1);
         theDeck.Add(1);
@@ -66,7 +65,7 @@ public class scrDeck : MonoBehaviour
         theDeck.Add(5);
         theDeck.Add(6);
 
-        //Randomise the order
+        //Randomise the order using Fisher-Yates
 
         for (int i = theDeck.Count - 1; i >= 0; i--)
         {
@@ -90,7 +89,7 @@ public class scrDeck : MonoBehaviour
 
     }
 
-    void drawCards()
+    public void drawCards()
     {
         curseinDeck = false;
         int numCardsDrawn = 0;

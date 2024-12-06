@@ -16,6 +16,7 @@ public class playerStuff : MonoBehaviour
 
     void Update()
     {
+        /*
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = camera.ScreenPointToRay(Input.mousePosition);
@@ -31,5 +32,6 @@ public class playerStuff : MonoBehaviour
                 }
             }
         }
+        */
     }
 }

@@ -308,5 +308,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157368d021e047d458096b3938605b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardType: 
-  cube: {fileID: 0}
+  cardType: Block

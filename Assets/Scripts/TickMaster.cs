@@ -8,39 +8,65 @@ public class TickMaster : MonoBehaviour
 
     public GameObject player;
     public GameObject enemy;
-    public static bool tick = true;
+
+    public bool tick = false;
     public int playerTick = 0; //current tick count
     public int enemyTick = 0;
+
     public int playerIncrease = 4;
     public int enemyIncrease = 4;
+
+    float timeToTick = 1; //How long between each tick
+    public GameObject deck;
+    scrDeck deckScript;
+    bool first = true;
     // Start is called before the first frame update
     void Start()
     {
-        //how much to increase by
+        deck = GameObject.FindGameObjectWithTag("Deck");
+        deckScript = deck.GetComponent<scrDeck>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        while (tick)
+        Debug.Log(playerTick);
+        timeToTick -= Time.deltaTime;
+        //This if statement counts down the time until the tick count should increase
+        if (timeToTick < 0)
         {
+            tick = true;
+            timeToTick = 1;
+            Debug.Log("Ticking");
+        }
+        //Debug.Log(timeToTick);
+        if (tick && first)
+        {
+            
+            timeToTick = 1;
+            
             playerTick += playerIncrease;
-            enemyTick += enemyIncrease;
+            
             if (playerTick >= 10)
             {
                 tick = false;
                 Debug.Log("Player can now go");
-                break;
+                deckScript.drawCards();
+                //playerTick = 0;
+                playerTick = 0;
+                first = false;
+                //break;
             }
+            enemyTick += enemyIncrease;
             if (enemyTick >= 10)
             {
                 tick = false;
                 Debug.Log("Enemy can now go");
-                break;
+                enemyTick = 0;
+                //break;
             }
         }
-
+        tick = false;
 
         //Tick Loop
         //Player goes up 1
