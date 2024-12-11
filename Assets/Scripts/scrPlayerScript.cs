@@ -11,7 +11,7 @@ public class scrPlayerScript : MonoBehaviour
     public int howCloseToTurn = 0;
     public int energy = 3;
     public Camera camera;
-
+    public bool dodge = false;
 
     private Rigidbody rigidbody;
     // Start is called before the first frame update
@@ -40,7 +40,26 @@ public class scrPlayerScript : MonoBehaviour
                 }
             }
         }
+        if (energy > 3)
+        {
+            energy = 3;
+        }
     }
 
+    public void recieveDamage(int damage)
+    {
+        //If there is > 0 block, that is recieved first
+        //Then health
+        block = block - damage;
+        if (block < 0)
+        {
+            playerHealth += block;
+            block = 0;
+        }
+       
+
+       
+
+    }
 
 }

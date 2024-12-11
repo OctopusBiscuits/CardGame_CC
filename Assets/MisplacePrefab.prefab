@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -9126346218975396857}
   m_Layer: 0
   m_Name: MisplacePrefab
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardType: 
-  cube: {fileID: 0}
+  tick: {fileID: 0}
 --- !u!1 &4714814774991467981
 GameObject:
   m_ObjectHideFlags: 0

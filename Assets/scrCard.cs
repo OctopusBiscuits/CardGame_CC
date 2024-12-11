@@ -9,6 +9,8 @@ public class scrCard : MonoBehaviour
     JoshCube josh;
     GameObject player;
     scrPlayerScript playerScript;
+    [SerializeField] TickMaster tick;
+    GameObject tickmaster;
     //public GameObject cube;
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,8 @@ public class scrCard : MonoBehaviour
         josh = joshcube.GetComponent<JoshCube>();
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<scrPlayerScript>();
+        tickmaster = GameObject.FindWithTag("Tick");
+        tick = tickmaster.GetComponent<TickMaster>();
     }
 
     // Update is called once per frame
@@ -47,5 +51,17 @@ public class scrCard : MonoBehaviour
             playerScript.energy += 1;
             Destroy(gameObject);
         }
+        else if (cardType == "End")
+        {
+            tick.PlayerTurn = false;
+            tick.tick = true;
+            tick.first = true;
+            Debug.Log("Turn Over Bitch");
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Card");
+            foreach (GameObject enemy in enemies)
+                GameObject.Destroy(enemy);
+            Destroy(gameObject);
+        }
+        
     }
 }

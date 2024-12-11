@@ -14,23 +14,29 @@ public class TickMaster : MonoBehaviour
     public int enemyTick = 0;
 
     public int playerIncrease = 4;
-    public int enemyIncrease = 4;
-
+    public int enemyIncrease = 2;
+    public bool PlayerTurn = false;
     float timeToTick = 1; //How long between each tick
     public GameObject deck;
     scrDeck deckScript;
-    bool first = true;
+    JoshCube joshScript;
+    scrPlayerScript scrPlayer;
+    public bool first = true;
+    public bool enemyTurn = false;
     // Start is called before the first frame update
     void Start()
     {
         deck = GameObject.FindGameObjectWithTag("Deck");
         deckScript = deck.GetComponent<scrDeck>();
+        joshScript = enemy.GetComponent<JoshCube>();
+        scrPlayer = player.GetComponent<scrPlayerScript>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(playerTick);
+
         timeToTick -= Time.deltaTime;
         //This if statement counts down the time until the tick count should increase
         if (timeToTick < 0)
@@ -40,7 +46,7 @@ public class TickMaster : MonoBehaviour
             Debug.Log("Ticking");
         }
         //Debug.Log(timeToTick);
-        if (tick && first)
+        if (tick && !PlayerTurn && !enemyTurn)
         {
             
             timeToTick = 1;
@@ -51,18 +57,25 @@ public class TickMaster : MonoBehaviour
             {
                 tick = false;
                 Debug.Log("Player can now go");
+                scrPlayer.energy++;
                 deckScript.drawCards();
                 //playerTick = 0;
+                //playerTick = 0;
+                PlayerTurn = true;
+
                 playerTick = 0;
-                first = false;
+                //first = false;
                 //break;
+                
             }
             enemyTick += enemyIncrease;
-            if (enemyTick >= 10)
+            if (enemyTick >= 10 && !PlayerTurn)
             {
                 tick = false;
                 Debug.Log("Enemy can now go");
                 enemyTick = 0;
+                enemyTurn = true;
+                joshScript.MyTurn();
                 //break;
             }
         }

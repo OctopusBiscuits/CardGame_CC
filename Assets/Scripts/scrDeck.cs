@@ -14,6 +14,7 @@ public class scrDeck : MonoBehaviour
     public GameObject timeCard;
     public GameObject dodgeCard;
     public GameObject misplaceCard;
+    public GameObject end;
     float test = 2;
     /*
     public int precCount = 4;
@@ -41,7 +42,7 @@ public class scrDeck : MonoBehaviour
     void Update()
     {
         
-        if (theDeck.Count < 5)
+        if (shuffledDeck.Count < 5)
         {
             DeckShuffle();
         }
@@ -93,9 +94,11 @@ public class scrDeck : MonoBehaviour
     {
         curseinDeck = false;
         int numCardsDrawn = 0;
+        Vector3 endturnpos = new Vector3(5.2f, 0.0f, 0.0f);
         while (numCardsDrawn < 5)
         {
             Vector3 newPos = new Vector3(8.0f - (3.5f * numCardsDrawn), -3.0f, 0.0f);
+            
             if (shuffledDeck.Peek() == 1)
             {
                 GameObject card = Instantiate(precCard, newPos, Quaternion.identity);
@@ -120,14 +123,14 @@ public class scrDeck : MonoBehaviour
                 shuffledDeck.Dequeue();
                 numCardsDrawn++;
             }
-            else if (shuffledDeck.Peek() == 5 && curseinDeck == false)
+            else if (shuffledDeck.Peek() == 5)
             {
                 GameObject card = Instantiate(timeCard, newPos, Quaternion.identity);
                 curseinDeck = true;
                 shuffledDeck.Dequeue();
                 numCardsDrawn++;
             }
-            else if (shuffledDeck.Peek() == 6 && curseinDeck == false)
+            else if (shuffledDeck.Peek() == 6 )
             {
                 GameObject card = Instantiate(misplaceCard, newPos, Quaternion.identity);
                 curseinDeck = true;
@@ -136,6 +139,8 @@ public class scrDeck : MonoBehaviour
             }
             
         }
+
+        GameObject endTurn = Instantiate(end, endturnpos, Quaternion.identity);
         
         
     }
