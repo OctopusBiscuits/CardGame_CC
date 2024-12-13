@@ -9,6 +9,7 @@ public class JoshCube : MonoBehaviour
     public static int tickCount = 4;
     public string enemyName;
     public TextMeshProUGUI text;
+    public TextMeshProUGUI damageText;
     public int health = 10;
     int count = 0;
     public int damageGiven = 6;
@@ -16,6 +17,7 @@ public class JoshCube : MonoBehaviour
     scrPlayerScript playerScript;
     GameObject tickmaster;
     TickMaster tick;
+    public srGameEnd gameEnd;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,17 +29,31 @@ public class JoshCube : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        transform.Rotate(0, 0.1f, 0);
+        //As Josh gets stronger, the rotation speed increases
+        transform.Rotate(0, 0.02f * damageGiven, 0);
 
         if (health == 0)
         {
-            SceneManager.LoadScene(1);
+            //SceneManager.LoadScene(1);
             Destroy(gameObject);
 
         }
-        text.text = enemyName + ", Health : " + health;
-
+        if (!tick.enemyTurn)
+        {
+            text.text = enemyName + ", Health : " + health;
+            damageText.text = "Damage Value: " + damageGiven;
+        }
+        else
+        {
+            text.text = "I think I will....";
+            //damageText.text = " ";
+        }
+        
+        if (health <= 0)
+        {
+            gameEnd.playerWin();
+            Destroy(gameObject);
+        }
         
     }
 
@@ -66,8 +82,36 @@ public class JoshCube : MonoBehaviour
 
     public void MyTurn()
     {
+        /*
+         * This should have a visual impact so the player can see the enemy is going.
+         * Should also last longer than 0.01 seconds
+            Imagine its like "Enemy Attack:
+        Josh Uses DAMAGE!!!!!!!!"
+        Coroutine is called so there can be pauses. This makes the attack last longer than 0.01 seconds
+         */
+        
+        StartCoroutine(EnemyGo());
+        
+
+    }
+    IEnumerator EnemyGo()
+    {
+        damageText.text = " ";
+        Debug.Log("In the enemyGo");
+        yield return new WaitForSeconds(2);
+        Debug.Log("Pause over");
         float go = Random.Range(0.0f, 2.0f);
-        if (go > 0.5f)
+        if (go > 0.4)
+        {
+            damageText.text = "ATTACK";
+        }
+        else
+        {
+            damageText.text = "Increase my power";
+        }
+        yield return new WaitForSeconds(2);
+        
+        if (go > 0.4f)
         {
             playerScript.recieveDamage(damageGiven);
         }
@@ -79,3 +123,4 @@ public class JoshCube : MonoBehaviour
         tick.enemyTurn = false;
     }
 }
+

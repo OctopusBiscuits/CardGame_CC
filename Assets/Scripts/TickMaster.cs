@@ -55,6 +55,7 @@ public class TickMaster : MonoBehaviour
             
             if (playerTick >= 10)
             {
+                scrPlayer.block = 0;
                 tick = false;
                 Debug.Log("Player can now go");
                 scrPlayer.energy++;

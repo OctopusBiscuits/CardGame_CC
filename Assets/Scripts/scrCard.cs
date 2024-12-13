@@ -11,22 +11,36 @@ public class scrCard : MonoBehaviour
     scrPlayerScript playerScript;
     [SerializeField] TickMaster tick;
     GameObject tickmaster;
+    srGameEnd gameEnd;
+    GameObject gameEnder;
     //public GameObject cube;
     // Start is called before the first frame update
     void Start()
     {
+        
         joshcube = GameObject.FindWithTag("Josh");
         josh = joshcube.GetComponent<JoshCube>();
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<scrPlayerScript>();
         tickmaster = GameObject.FindWithTag("Tick");
         tick = tickmaster.GetComponent<TickMaster>();
+        gameEnder = GameObject.FindWithTag("end");
+        gameEnd = gameEnder.GetComponent<srGameEnd>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (gameEnd.gameOver)
+        {
+            Debug.Log("Destroying cards");
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Card");
+            foreach (GameObject enemy in enemies)
+            {
+                GameObject.Destroy(enemy);
+            }
+
+        }
     }
 
     public void UseCard()
@@ -34,7 +48,7 @@ public class scrCard : MonoBehaviour
         Debug.Log("This is a test");
         if (cardType == "Precision" && playerScript.energy > 0)
         {
-            josh.health -= 10;
+            josh.health -= 5;
             playerScript.energy--;
             Destroy(gameObject);
             
@@ -56,7 +70,6 @@ public class scrCard : MonoBehaviour
             tick.PlayerTurn = false;
             tick.tick = true;
             tick.first = true;
-            Debug.Log("Turn Over Bitch");
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Card");
             foreach (GameObject enemy in enemies)
                 GameObject.Destroy(enemy);

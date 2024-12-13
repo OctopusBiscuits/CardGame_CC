@@ -8,6 +8,7 @@ TagManager:
   - Deck
   - Tick
   - Card
+  - end
   layers:
   - Default
   - TransparentFX

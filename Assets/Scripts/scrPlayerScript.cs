@@ -12,7 +12,7 @@ public class scrPlayerScript : MonoBehaviour
     public int energy = 3;
     public Camera camera;
     public bool dodge = false;
-
+    public srGameEnd gameEnd;
     private Rigidbody rigidbody;
     // Start is called before the first frame update
     void Start()
@@ -56,7 +56,10 @@ public class scrPlayerScript : MonoBehaviour
             playerHealth += block;
             block = 0;
         }
-       
+        if (playerHealth < 0)
+        {
+            gameEnd.enemyWin();
+        }
 
        
 
