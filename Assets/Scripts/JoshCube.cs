@@ -51,7 +51,7 @@ public class JoshCube : MonoBehaviour
         
         if (health <= 0)
         {
-            gameEnd.playerWin();
+            gameEnd.battleOver(true);
             Destroy(gameObject);
         }
         

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class srGameEnd : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class srGameEnd : MonoBehaviour
      * 
      */
     // Start is called before the first frame update
+    public TextMeshPro text;
     public bool gameOver = false;
     void Start()
     {
@@ -23,15 +26,26 @@ public class srGameEnd : MonoBehaviour
         
     }
 
-    public void enemyWin()
-    {
-        Debug.Log("Enemy win");
-        gameOver = true;
-    }
+    
 
-    public void playerWin()
+    public void battleOver(bool playerWin)
     {
-        Debug.Log("Player win");
+        text.transform.position = new Vector3(0, 0, 0);
         gameOver = true;
+        if (playerWin)
+        {
+            text.text = "Battle over. You defeated Josh!!!!!";
+        }
+        else
+        {
+            text.text = "Battle over. Josh defeated you";
+        }
+        StartCoroutine(pause());
+    }
+    IEnumerator pause()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(1);
+
     }
 }

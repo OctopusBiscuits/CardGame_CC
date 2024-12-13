@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CardTest.unity
     guid: b6ed8dc8817b29f4e8dabfc828867697
+  - enabled: 1
+    path: Assets/Scenes/JoshCubeIntro.unity
+    guid: 43a6e041edeb1d54789a532b61d9075a
   m_configObjects: {}
