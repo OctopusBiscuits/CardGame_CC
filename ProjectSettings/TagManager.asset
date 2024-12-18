@@ -9,6 +9,7 @@ TagManager:
   - Tick
   - Card
   - end
+  - Enemy
   layers:
   - Default
   - TransparentFX

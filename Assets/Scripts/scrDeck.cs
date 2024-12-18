@@ -15,7 +15,9 @@ public class scrDeck : MonoBehaviour
     public GameObject dodgeCard;
     public GameObject misplaceCard;
     public GameObject end;
+    public GameObject sweepCard;
     float test = 2;
+    bool multipleEnemies;
     /*
     public int precCount = 4;
     public int bloCount = 4;
@@ -34,6 +36,16 @@ public class scrDeck : MonoBehaviour
      */
     void Start()
     {
+        //Check how many enemies are in the level to determine if Sweep card is needed
+        if(GameObject.FindGameObjectsWithTag("Enemy").Length > 1)
+        {
+            multipleEnemies = true;
+        }
+        else
+        {
+            multipleEnemies = false;
+        }
+
         DeckShuffle();
         printDeck();
     }
@@ -65,7 +77,12 @@ public class scrDeck : MonoBehaviour
         theDeck.Add(4);
         theDeck.Add(5);
         theDeck.Add(6);
-
+        if (multipleEnemies)
+        {
+            theDeck.Add(7);
+            theDeck.Add(7);
+            theDeck.Add(7);
+        }
         //Randomise the order using Fisher-Yates
 
         for (int i = theDeck.Count - 1; i >= 0; i--)
@@ -134,6 +151,12 @@ public class scrDeck : MonoBehaviour
             {
                 GameObject card = Instantiate(misplaceCard, newPos, Quaternion.identity);
                 curseinDeck = true;
+                shuffledDeck.Dequeue();
+                numCardsDrawn++;
+            }
+            else if (shuffledDeck.Peek() == 7)
+            {
+                GameObject card = Instantiate(sweepCard, newPos, Quaternion.identity);
                 shuffledDeck.Dequeue();
                 numCardsDrawn++;
             }

@@ -40,7 +40,7 @@ public class scrLevelLoading : MonoBehaviour
         }
         else if (playerLocation == 2 && canClick)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(4);
         }
     }
 }

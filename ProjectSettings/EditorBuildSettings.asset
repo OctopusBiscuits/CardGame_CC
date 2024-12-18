@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JoshCubeIntro.unity
     guid: 43a6e041edeb1d54789a532b61d9075a
+  - enabled: 1
+    path: Assets/Scenes/SweepIntro.unity
+    guid: e08815593bbac6945ae0da2c2e05ac51
+  - enabled: 1
+    path: Assets/Scenes/SweepLevel.unity
+    guid: 138c7312f654a534993bae0029d285f8
   m_configObjects: {}

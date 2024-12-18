@@ -46,12 +46,17 @@ public class scrCard : MonoBehaviour
     public void UseCard()
     {
         Debug.Log("This is a test");
-        if (cardType == "Precision" && playerScript.energy > 0)
+        if (cardType == "Precision" && playerScript.energy > 0 && GameObject.FindGameObjectsWithTag("Enemy").Length < 2)
         {
             josh.health -= 5;
             playerScript.energy--;
             Destroy(gameObject);
             
+        }
+        else if (cardType == "Precision" && playerScript.energy > 0)
+        {
+            //Select enemy
+            //Then deal damage to that enemy
         }
 
         else if (cardType == "Block" && playerScript.energy > 0)
