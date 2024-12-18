@@ -1,15 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
-public class JoshCube : MonoBehaviour
+public class scrEnemy : MonoBehaviour
 {
-    public static int tickCount = 4;
+    public int tickCount = 4;
+    public int currentTick = 0;
     public string enemyName;
-    public TextMeshProUGUI text;
-    public TextMeshProUGUI damageText;
     public int health = 10;
     int count = 0;
     public int damageGiven = 6;
@@ -18,6 +15,11 @@ public class JoshCube : MonoBehaviour
     GameObject tickmaster;
     TickMaster tick;
     public srGameEnd gameEnd;
+    public TextMeshProUGUI text;
+    public TextMeshProUGUI damageText;
+    public TextMeshProUGUI tickText;
+    public bool myGo;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -30,10 +32,19 @@ public class JoshCube : MonoBehaviour
     void Update()
     {
         //As Josh gets stronger, the rotation speed increases
-        transform.Rotate(0, 0.02f * damageGiven, 0);
+        if (enemyName == "josh")
+        {
+            transform.Rotate(0, 0.02f * damageGiven, 0);
+        }
+        tickText.text = "Tick: " + currentTick;
 
+        if (health <= 0)
+        {
+            gameEnd.battleOver(true);
+            Destroy(gameObject);
+        }
         
-        if (!tick.enemyTurn)
+        if (!myGo)
         {
             text.text = enemyName + ", Health : " + health;
             damageText.text = "Damage Value: " + damageGiven;
@@ -41,39 +52,38 @@ public class JoshCube : MonoBehaviour
         else
         {
             text.text = "I think I will....";
-            //damageText.text = " ";
+            
         }
-        
-        if (health <= 0)
-        {
-            gameEnd.battleOver(true);
-            Destroy(gameObject);
-        }
-        
+
     }
 
     private void FixedUpdate()
     {
-        if (count < 50)
+        if (enemyName == "josh")
         {
-            Vector3 aPos = transform.position;
-            aPos.y = aPos.y + 0.01f;
-            transform.position = aPos;
-            count++;
+            if (count < 50)
+            {
+                Vector3 aPos = transform.position;
+                aPos.y = aPos.y + 0.01f;
+                transform.position = aPos;
+                count++;
+            }
+            else if (count < 100)
+            {
+                Vector3 aPos = transform.position;
+                aPos.y = aPos.y - 0.01f;
+                transform.position = aPos;
+                count++;
+            }
+            else if (count == 100)
+            {
+                count = 0;
+            }
         }
-        else if (count < 100)
-        {
-            Vector3 aPos = transform.position;
-            aPos.y = aPos.y - 0.01f;
-            transform.position = aPos;
-            count++;
-        }
-        else if (count == 100)
-        {
-            count = 0;
-        }
+        
 
     }
+    
 
     public void MyTurn()
     {
@@ -84,13 +94,14 @@ public class JoshCube : MonoBehaviour
         Josh Uses DAMAGE!!!!!!!!"
         Coroutine is called so there can be pauses. This makes the attack last longer than 0.01 seconds
          */
-        
+
         StartCoroutine(EnemyGo());
-        
+
 
     }
     IEnumerator EnemyGo()
     {
+        myGo = true;    
         damageText.text = " ";
         Debug.Log("In the enemyGo");
         yield return new WaitForSeconds(2);
@@ -105,7 +116,7 @@ public class JoshCube : MonoBehaviour
             damageText.text = "Increase my power";
         }
         yield return new WaitForSeconds(2);
-        
+
         if (go > 0.4f)
         {
             playerScript.recieveDamage(damageGiven);
@@ -116,6 +127,12 @@ public class JoshCube : MonoBehaviour
         }
         tick.tick = false;
         tick.enemyTurn = false;
+        myGo = false;
+    }
+
+    public void selectEnemy (int i)
+    {
+
+        Debug.Log("Button pressed");
     }
 }
-

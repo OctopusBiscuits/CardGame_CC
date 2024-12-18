@@ -11,15 +11,15 @@ public class TickMaster : MonoBehaviour
 
     public bool tick = false;
     public int playerTick = 0; //current tick count
-    public int enemyTick = 0;
+    //public int enemyTick = 0;
 
     public int playerIncrease = 4;
-    public int enemyIncrease = 2;
+    //public int enemyIncrease = 4;
     public bool PlayerTurn = false;
     float timeToTick = 1; //How long between each tick
     public GameObject deck;
     scrDeck deckScript;
-    JoshCube joshScript;
+    scrEnemy joshScript;
     scrPlayerScript scrPlayer;
     public bool first = true;
     public bool enemyTurn = false;
@@ -28,7 +28,7 @@ public class TickMaster : MonoBehaviour
     {
         deck = GameObject.FindGameObjectWithTag("Deck");
         deckScript = deck.GetComponent<scrDeck>();
-        joshScript = enemy.GetComponent<JoshCube>();
+        joshScript = enemy.GetComponent<scrEnemy>();
         scrPlayer = player.GetComponent<scrPlayerScript>();
         
     }
@@ -43,7 +43,7 @@ public class TickMaster : MonoBehaviour
         {
             tick = true;
             timeToTick = 1;
-            Debug.Log("Ticking");
+            //Debug.Log("Ticking");
         }
         //Debug.Log(timeToTick);
         if (tick && !PlayerTurn && !enemyTurn)
@@ -69,16 +69,58 @@ public class TickMaster : MonoBehaviour
                 //break;
                 
             }
-            enemyTick += enemyIncrease;
-            if (enemyTick >= 10 && !PlayerTurn)
+            /*
+            if (GameObject.FindGameObjectsWithTag("Enemy").Length < 2)
             {
-                tick = false;
-                Debug.Log("Enemy can now go");
-                enemyTick = 0;
-                enemyTurn = true;
-                joshScript.MyTurn();
-                //break;
+                enemyTick += enemyIncrease;
+                if (enemyTick >= 10 && !PlayerTurn)
+                {
+                    tick = false;
+                    Debug.Log("Enemy can now go");
+                    enemyTick = 0;
+                    enemyTurn = true;
+                    joshScript.MyTurn();
+                    //break;
+                }
             }
+            */
+            if (GameObject.FindGameObjectsWithTag("Enemy").Length > 0 )
+            {
+                foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+                {
+                    scrEnemy enemyScript = enemy.GetComponent<scrEnemy>();
+                    enemyScript.currentTick += enemyScript.tickCount;
+                    if (enemyScript.currentTick >= 10 && !PlayerTurn)
+                    {
+                        tick = false;
+                        enemyScript.currentTick = 0;
+                        enemyScript.myGo = true;
+                        enemyScript.MyTurn();
+                        enemyTurn = true;
+                    }
+
+                }
+            }
+            if (GameObject.FindGameObjectsWithTag("Josh").Length > 0)
+            {
+                Debug.Log("Josh");
+                foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Josh"))
+                {
+                    scrEnemy enemyScript = enemy.GetComponent<scrEnemy>();
+                    enemyScript.currentTick += enemyScript.tickCount;
+                    if (enemyScript.currentTick >= 10 && !PlayerTurn)
+                    {
+                        tick = false;
+                        enemyScript.currentTick = 0;
+                        enemyScript.myGo = true;
+                        enemyScript.MyTurn();
+                        enemyTurn = true;
+                    }
+
+                }
+            }
+            
+            
         }
         tick = false;
 

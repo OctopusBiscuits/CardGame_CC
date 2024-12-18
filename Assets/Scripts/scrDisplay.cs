@@ -9,7 +9,7 @@ public class scrDisplay : MonoBehaviour
     public TextMeshProUGUI blockText;
     public TextMeshProUGUI energyText;
     public TextMeshProUGUI test1;
-    public TextMeshProUGUI test2;
+    //public TextMeshProUGUI test2;
     [SerializeField] scrPlayerScript pScript;
     [SerializeField] TickMaster tick;
     public int holder;
@@ -31,12 +31,12 @@ public class scrDisplay : MonoBehaviour
             holder2 = pScript.block;
             holder3 = pScript.energy;
             int holder4 = tick.playerTick;
-            int holder5 = tick.enemyTick;
+            //int holder5 = tick.enemyTick;
             healthText.text = "Health: " + holder;
             blockText.text = "Block: " + holder2;
             energyText.text = "Energy: " + holder3;
             test1.text = "Player tick: " + holder4;
-            test2.text = "Enemy tick: " + holder5;
+            //test2.text = "Enemy tick: " + holder5;
 
             if (tick.PlayerTurn)
             {
@@ -46,6 +46,7 @@ public class scrDisplay : MonoBehaviour
             {
                 test1.color = Color.white;
             }
+            /*
             if (tick.enemyTurn)
             {
                 test2.color = Color.green;
@@ -54,6 +55,7 @@ public class scrDisplay : MonoBehaviour
             {
                 test2.color = Color.white;
             }
+            */
         }
         else
         {
@@ -61,7 +63,7 @@ public class scrDisplay : MonoBehaviour
             blockText.text = " ";
             energyText.text = " ";
             test1.text = " ";
-            test2.text = " ";
+            //test2.text = " ";
         }
         
     }

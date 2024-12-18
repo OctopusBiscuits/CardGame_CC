@@ -23,13 +23,21 @@ public class srGameEnd : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //
     }
 
     
 
     public void battleOver(bool playerWin)
     {
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Josh"))
+        {
+            Destroy(enemy.gameObject);
+        }
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            Destroy(enemy.gameObject);
+        }
         text.transform.position = new Vector3(0, 0, 0);
         gameOver = true;
         if (playerWin)
