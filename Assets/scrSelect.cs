@@ -7,6 +7,7 @@ public class scrSelect : MonoBehaviour
     public bool selectMode = false;
     GameObject delete;
     public string selectedEnemy;
+
     // Start is called before the first frame update
     void Start()
     {
