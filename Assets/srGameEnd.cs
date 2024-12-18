@@ -35,6 +35,7 @@ public class srGameEnd : MonoBehaviour
         if (playerWin)
         {
             text.text = "Battle over. You defeated Josh!!!!!";
+            scrLocationManager.Instance.unlockedLevels.Add(2);
         }
         else
         {
@@ -45,6 +46,7 @@ public class srGameEnd : MonoBehaviour
     IEnumerator pause()
     {
         yield return new WaitForSeconds(3);
+        Debug.Log("We're here");
         SceneManager.LoadScene(1);
 
     }

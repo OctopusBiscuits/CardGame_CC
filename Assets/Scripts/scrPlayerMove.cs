@@ -16,6 +16,7 @@ public class scrPlayerMove : MonoBehaviour
     int lcount = 0;
     int rcount = 0;
     bool movingRN = false;
+    public int currentLocation;
     // Start is called before the first frame update
     void Start()
     {
