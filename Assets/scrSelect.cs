@@ -5,7 +5,7 @@ using UnityEngine;
 public class scrSelect : MonoBehaviour
 {
     public bool selectMode = false;
-    public bool tellCardToDelete = false;
+    GameObject delete;
     public string selectedEnemy;
     // Start is called before the first frame update
     void Start()
@@ -16,10 +16,7 @@ public class scrSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (tellCardToDelete)
-        {
-
-        }
+        //
     }
 
     public void Select(GameObject thisEnemy)
@@ -29,7 +26,8 @@ public class scrSelect : MonoBehaviour
         {
             
             thisEnemy.GetComponent<scrEnemy>().health -= 5;
-            tellCardToDelete = true;
+            delete = GameObject.FindWithTag("Delete");
+            Destroy(delete);
         }
         else
         {

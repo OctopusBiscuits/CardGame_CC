@@ -11,6 +11,7 @@ TagManager:
   - end
   - Enemy
   - Selector
+  - Delete
   layers:
   - Default
   - TransparentFX

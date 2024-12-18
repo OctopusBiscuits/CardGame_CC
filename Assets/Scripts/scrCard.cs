@@ -34,11 +34,10 @@ public class scrCard : MonoBehaviour
             josh = joshcube.GetComponent<scrEnemy>();
         }
         */
-        if (SceneManager.GetActiveScene().name == "SweepLevel")
-        {
-            selection = GameObject.FindWithTag("Selector");
-            select = selection.GetComponent<scrSelect>();
-        }
+        
+        selection = GameObject.FindWithTag("Selector");
+        select = selection.GetComponent<scrSelect>();
+        
         
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<scrPlayerScript>();
@@ -63,20 +62,15 @@ public class scrCard : MonoBehaviour
 
         }
         */
-        if (SceneManager.GetActiveScene().name == "SweepLevel")
-        {
-            if (select.tellCardToDelete)
-            {
-                
-                Destroy(cardToDelete);
-                cardToDelete = null;
-                select.tellCardToDelete = false;
-            }
-        }
+        
     }
 
     public void UseCard()
     {
+        if (select.selectMode == true)
+        {
+            return; //This ensures that if the player has clicked a precision card and is choosing an enemy to attack, they cannot use any other cards
+        }
         Debug.Log("This is a test");
         if (cardType == "Precision" && playerScript.energy > 0 && GameObject.FindGameObjectsWithTag("Enemy").Length < 2)
         {
@@ -93,6 +87,8 @@ public class scrCard : MonoBehaviour
             Debug.Log("Here");
             select.selectMode = true;
             cardToDelete = this.gameObject;
+            playerScript.energy--;
+            gameObject.tag = "Delete";
             //Then deal damage to that enemy
         }
 
