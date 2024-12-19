@@ -50,6 +50,11 @@ public class scrPlayerScript : MonoBehaviour
     {
         //If there is > 0 block, that is recieved first
         //Then health
+        if (dodge)
+        {
+            dodge = false;
+            return; //If player has used a dodge card, this blocks ANY damage from occuring this turn.
+        }
         block = block - damage;
         if (block < 0)
         {

@@ -74,20 +74,21 @@ public class scrCard : MonoBehaviour
         Debug.Log("This is a test");
         if (cardType == "Precision" && playerScript.energy > 0 && GameObject.FindGameObjectsWithTag("Enemy").Length < 2)
         {
-            
+
             GameObject enemy1 = realEnemyList[0];
             enemy1.GetComponent<scrEnemy>().health -= 5;
             playerScript.energy--;
             Destroy(gameObject);
-            
+
         }
         else if (cardType == "Precision" && playerScript.energy > 0)
         {
             //Select enemy
+            playerScript.energy--;
             Debug.Log("Here");
             select.selectMode = true;
             cardToDelete = this.gameObject;
-            playerScript.energy--;
+
             gameObject.tag = "Delete";
             //Then deal damage to that enemy
         }
@@ -101,6 +102,22 @@ public class scrCard : MonoBehaviour
         else if (cardType == "Rest")
         {
             playerScript.energy += 1;
+            Destroy(gameObject);
+        }
+        else if (cardType == "Sweep" && playerScript.energy > 0)
+        {
+            GameObject[] updatedEnemyList = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in updatedEnemyList)
+            {
+                enemy.GetComponent<scrEnemy>().health -= 2;
+            }
+            playerScript.energy--;
+            Destroy(gameObject);
+        }
+        else if (cardType == "Dodge" && playerScript.energy > 0)
+        {
+            playerScript.dodge = true;
+            playerScript.energy--;
             Destroy(gameObject);
         }
         else if (cardType == "End")

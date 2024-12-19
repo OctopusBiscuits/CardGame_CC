@@ -133,8 +133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157368d021e047d458096b3938605b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardType: Precision
+  cardType: Sweep
   tick: {fileID: 0}
+  realEnemyList: []
 --- !u!1 &7890809968539504400
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ public class srGameEnd : MonoBehaviour
     // Start is called before the first frame update
     public TextMeshPro text;
     public bool gameOver = false;
+    
     void Start()
     {
         
@@ -23,13 +24,18 @@ public class srGameEnd : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length < 1)
+        {
+            battleOver(true);
+        }
+        
     }
 
     
 
     public void battleOver(bool playerWin)
     {
+        /*
         foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Josh"))
         {
             Destroy(enemy.gameObject);
@@ -38,16 +44,21 @@ public class srGameEnd : MonoBehaviour
         {
             Destroy(enemy.gameObject);
         }
+        */
+        foreach (GameObject card in GameObject.FindGameObjectsWithTag("Card"))
+        {
+            Destroy(card.gameObject);
+        }
         text.transform.position = new Vector3(0, 0, 0);
         gameOver = true;
         if (playerWin)
         {
-            text.text = "Battle over. You defeated Josh!!!!!";
+            text.text = "Battle over. You won!!!!!";
             scrLocationManager.Instance.unlockedLevels.Add(2);
         }
         else
         {
-            text.text = "Battle over. Josh defeated you";
+            text.text = "Battle over. You were defeated";
         }
         StartCoroutine(pause());
     }

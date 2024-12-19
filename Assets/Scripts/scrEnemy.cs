@@ -39,8 +39,7 @@ public class scrEnemy : MonoBehaviour
         tickText.text = "Tick: " + currentTick;
 
         if (health <= 0)
-        {
-            gameEnd.battleOver(true);
+        {         
             Destroy(gameObject);
         }
         
