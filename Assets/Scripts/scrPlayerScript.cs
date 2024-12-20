@@ -61,7 +61,7 @@ public class scrPlayerScript : MonoBehaviour
             playerHealth += block;
             block = 0;
         }
-        if (playerHealth < 0)
+        if (playerHealth <= 0)
         {
             gameEnd.battleOver(false);
         }

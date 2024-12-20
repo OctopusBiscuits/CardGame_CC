@@ -93,17 +93,22 @@ public class scrCard : MonoBehaviour
             //Then deal damage to that enemy
         }
 
+        // Provides block to the players healthbar. This prevents a set amount of damage dealt by the enemy attacks
         else if (cardType == "Block" && playerScript.energy > 0)
         {
             playerScript.block += 5;
             playerScript.energy--;
             Destroy(gameObject);
         }
+
+        // Allows the character to practice their breathing exercises, restoring one energy to their bar
         else if (cardType == "Rest")
         {
             playerScript.energy += 1;
             Destroy(gameObject);
         }
+
+        // Make a wide attack that strikes all enemies in one go!
         else if (cardType == "Sweep" && playerScript.energy > 0)
         {
             GameObject[] updatedEnemyList = GameObject.FindGameObjectsWithTag("Enemy");
@@ -114,6 +119,7 @@ public class scrCard : MonoBehaviour
             playerScript.energy--;
             Destroy(gameObject);
         }
+
         else if (cardType == "Dodge" && playerScript.energy > 0)
         {
             playerScript.dodge = true;

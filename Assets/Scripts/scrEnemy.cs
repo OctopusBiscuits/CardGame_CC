@@ -38,6 +38,11 @@ public class scrEnemy : MonoBehaviour
         }
         tickText.text = "Tick: " + currentTick;
 
+        if (health <= health / 2)
+        {
+            tickCount = 5;
+        }
+
         if (health <= 0)
         {         
             Destroy(gameObject);
@@ -105,8 +110,14 @@ public class scrEnemy : MonoBehaviour
         Debug.Log("In the enemyGo");
         yield return new WaitForSeconds(2);
         Debug.Log("Pause over");
-        float go = Random.Range(0.0f, 2.0f);
-        if (go > 0.4)
+
+        //float go = Random.Range(0.0f, 2.0f);
+
+        int Enemychoice = Random.Range(0, 100);
+        Debug.Log("Joshcube rolled a " +Enemychoice);
+
+        // If Enemychoice is above [Set integer] the enemy will announce that it will strike you down before dealing [Set integer] to player
+        if (Enemychoice > 30)
         {
             damageText.text = "ATTACK";
         }
@@ -116,7 +127,7 @@ public class scrEnemy : MonoBehaviour
         }
         yield return new WaitForSeconds(2);
 
-        if (go > 0.4f)
+        if (Enemychoice > 30)
         {
             playerScript.recieveDamage(damageGiven);
         }

@@ -96,6 +96,7 @@ public class JoshCube : MonoBehaviour
         yield return new WaitForSeconds(2);
         Debug.Log("Pause over");
         float go = Random.Range(0.0f, 2.0f);
+        Debug.Log("Joshcube rolled a " + go);
         if (go > 0.4)
         {
             damageText.text = "ATTACK";

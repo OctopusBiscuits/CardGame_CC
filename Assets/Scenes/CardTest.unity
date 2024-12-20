@@ -1080,10 +1080,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97f254150088a5449828c154c38e8b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tickCount: 5
+  tickCount: 4
   currentTick: 0
   enemyName: josh
-  health: 20
+  health: 30
   damageGiven: 6
   player: {fileID: 272047572}
   gameEnd: {fileID: 1930117314}
