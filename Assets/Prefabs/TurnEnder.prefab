@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -7311492583193113228}
   m_Layer: 0
   m_Name: TurnEnder
-  m_TagString: Card
+  m_TagString: CurseCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: End
   tick: {fileID: 0}
+  realEnemyList: []
 --- !u!1 &3688896278789196359
 GameObject:
   m_ObjectHideFlags: 0

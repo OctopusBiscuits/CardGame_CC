@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -9126346218975396857}
   m_Layer: 0
   m_Name: MisplacePrefab
-  m_TagString: Card
+  m_TagString: CurseCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e84c0521513301b4c92f06e6c40d269c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -133,8 +133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157368d021e047d458096b3938605b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardType: 
+  cardType: Misplace
   tick: {fileID: 0}
+  realEnemyList: []
 --- !u!1 &4714814774991467981
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,12 +235,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Card 6
-
-
-    I forgot what
-
-    this one does'
+  m_text: "Misplace\nOh No! You misplaced \na card. Your hand has\none less card
+    this \nturn"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

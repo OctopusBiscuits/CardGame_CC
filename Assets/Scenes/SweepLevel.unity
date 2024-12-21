@@ -490,6 +490,7 @@ MonoBehaviour:
   deck: {fileID: 441063707}
   first: 1
   enemyTurn: 0
+  activeTimeBlindness: 0
 --- !u!4 &90301018
 Transform:
   m_ObjectHideFlags: 0
@@ -734,8 +735,8 @@ MonoBehaviour:
   player: {fileID: 1226585004}
   gameEnd: {fileID: 4391313}
   text: {fileID: 51574645}
-  damageText: {fileID: 1655908524}
-  tickText: {fileID: 1822722636}
+  damageText: {fileID: 1822722636}
+  tickText: {fileID: 1655908524}
   myGo: 0
 --- !u!1 &441063707
 GameObject:
@@ -2074,8 +2075,8 @@ MonoBehaviour:
   player: {fileID: 1226585004}
   gameEnd: {fileID: 4391313}
   text: {fileID: 1143702133}
-  damageText: {fileID: 682289118}
-  tickText: {fileID: 606361387}
+  damageText: {fileID: 606361387}
+  tickText: {fileID: 682289118}
   myGo: 0
 --- !u!65 &1287914803
 BoxCollider:
@@ -2698,8 +2699,8 @@ MonoBehaviour:
   player: {fileID: 1226585004}
   gameEnd: {fileID: 4391313}
   text: {fileID: 1946802290}
-  damageText: {fileID: 1586942931}
-  tickText: {fileID: 1917171206}
+  damageText: {fileID: 1917171206}
+  tickText: {fileID: 1586942931}
   myGo: 0
 --- !u!65 &1897625050
 BoxCollider:

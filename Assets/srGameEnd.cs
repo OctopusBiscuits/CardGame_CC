@@ -49,6 +49,12 @@ public class srGameEnd : MonoBehaviour
         {
             Destroy(card.gameObject);
         }
+        GameObject[] cursecards = GameObject.FindGameObjectsWithTag("CurseCard");
+        foreach (GameObject card in cursecards)
+        {
+            GameObject.Destroy(card);
+        }
+            
         text.transform.position = new Vector3(0, 0, 0);
         gameOver = true;
         if (playerWin)

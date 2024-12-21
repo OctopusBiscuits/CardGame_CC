@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - Selector
   - Delete
+  - CurseCard
   layers:
   - Default
   - TransparentFX

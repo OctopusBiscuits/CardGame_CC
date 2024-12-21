@@ -45,6 +45,15 @@ public class scrCard : MonoBehaviour
         tick = tickmaster.GetComponent<TickMaster>();
         gameEnder = GameObject.FindWithTag("end");
         gameEnd = gameEnder.GetComponent<srGameEnd>();
+
+        if (cardType == "Time")
+        {
+            TimeBlindness();
+        }
+        else if (cardType == "Misplace")
+        {
+            Misplace();
+        }
     }
 
     // Update is called once per frame
@@ -63,6 +72,26 @@ public class scrCard : MonoBehaviour
         }
         */
         
+    }
+
+    public void TimeBlindness()
+    {
+        tick.activeTimeBlindness = true;
+        StartCoroutine(Pause());
+    }
+
+    IEnumerator Pause()
+    {
+        yield return new WaitForSeconds(5);
+        //Destroy(gameObject);
+    }
+    public void Misplace()
+    {
+        GameObject[] possibleDeletion = GameObject.FindGameObjectsWithTag("Card");
+        int length = possibleDeletion.Length;
+        int randomDeletion = Random.Range(0, length);
+        Destroy(possibleDeletion[randomDeletion]);
+        StartCoroutine(Pause());
     }
 
     public void UseCard()
@@ -131,9 +160,13 @@ public class scrCard : MonoBehaviour
             tick.PlayerTurn = false;
             tick.tick = true;
             tick.first = true;
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Card");
-            foreach (GameObject enemy in enemies)
-                GameObject.Destroy(enemy);
+            GameObject[] cursecards = GameObject.FindGameObjectsWithTag("CurseCard");
+            foreach (GameObject card in cursecards)
+                GameObject.Destroy(card);
+            GameObject[] cards = GameObject.FindGameObjectsWithTag("Card");
+            foreach (GameObject card in cards)
+                GameObject.Destroy(card);
+            
             Destroy(gameObject);
         }
         

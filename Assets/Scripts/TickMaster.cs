@@ -23,6 +23,7 @@ public class TickMaster : MonoBehaviour
     scrPlayerScript scrPlayer;
     public bool first = true;
     public bool enemyTurn = false;
+    public bool activeTimeBlindness = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +52,16 @@ public class TickMaster : MonoBehaviour
             
             timeToTick = 1;
             
-            playerTick += playerIncrease;
+            if (!activeTimeBlindness)
+            {
+                playerTick += playerIncrease;
+            }
+            else
+            {
+                Debug.Log("It worked");
+                activeTimeBlindness = false;
+            }
+            
             
             if (playerTick >= 10)
             {
