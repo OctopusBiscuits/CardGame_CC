@@ -135,6 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: Rest
   tick: {fileID: 0}
+  realEnemyList: []
 --- !u!1 &4046856742386687881
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +239,9 @@ MonoBehaviour:
 
     Cost: 0
 
-    Yap Yap'
+    Gain 1
+
+    energy'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

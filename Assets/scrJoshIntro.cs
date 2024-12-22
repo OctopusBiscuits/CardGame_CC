@@ -17,17 +17,17 @@ public class scrJoshIntro : MonoBehaviour
     void Update()
     {
         
-        count += Time.deltaTime;
-        Debug.Log(count);
-        if (count < 2)
+        //count += Time.deltaTime;
+        //Debug.Log(count);
+        if (count < 1)
         {
             textMeshPro.text = "Josh has appeared...";
         }
-        else if (count < 4)
+        else if (count < 2)
         {
             textMeshPro.text = "He isn't happy to see you.";
         }
-        else if (count < 6)
+        else if (count < 3)
         {
             textMeshPro.text = "He wants to fight!";
         }
@@ -36,5 +36,10 @@ public class scrJoshIntro : MonoBehaviour
             SceneManager.LoadScene(2);
         }
 
+    }
+
+    public void addCount()
+    {
+        count++;
     }
 }

@@ -74,7 +74,7 @@ public class TickMaster : MonoBehaviour
                 //playerTick = 0;
                 PlayerTurn = true;
 
-                playerTick = 0;
+                playerTick -= 10;
                 //first = false;
                 //break;
                 
@@ -103,7 +103,7 @@ public class TickMaster : MonoBehaviour
                     if (enemyScript.currentTick >= 10 && !PlayerTurn)
                     {
                         tick = false;
-                        enemyScript.currentTick = 0;
+                        enemyScript.currentTick -= 10;
                         enemyScript.myGo = true;
                         enemyScript.MyTurn();
                         enemyTurn = true;
@@ -121,7 +121,7 @@ public class TickMaster : MonoBehaviour
                     if (enemyScript.currentTick >= 10 && !PlayerTurn)
                     {
                         tick = false;
-                        enemyScript.currentTick = 0;
+                        enemyScript.currentTick -= 10;
                         enemyScript.myGo = true;
                         enemyScript.MyTurn();
                         enemyTurn = true;

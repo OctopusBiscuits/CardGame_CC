@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SweepLevel.unity
     guid: 138c7312f654a534993bae0029d285f8
+  - enabled: 1
+    path: Assets/Scenes/GameIntro.unity
+    guid: 2674d32c904da254b924c5195eba6007
   m_configObjects: {}
