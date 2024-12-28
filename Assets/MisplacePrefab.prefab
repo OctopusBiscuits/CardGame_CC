@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5548685534022411116}
   - component: {fileID: 3561384105258012027}
   - component: {fileID: 5497304783402879285}
-  - component: {fileID: -7787691955469966251}
   - component: {fileID: -9126346218975396857}
   m_Layer: 0
   m_Name: MisplacePrefab
@@ -108,19 +107,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-7787691955469966251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2229102653764746071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e30479daa5c9a7449943bedc1703e6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camera: {fileID: 0}
 --- !u!114 &-9126346218975396857
 MonoBehaviour:
   m_ObjectHideFlags: 0

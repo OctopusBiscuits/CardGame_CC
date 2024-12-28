@@ -14,6 +14,7 @@ public class scrPlayerScript : MonoBehaviour
     public bool dodge = false;
     public srGameEnd gameEnd;
     private Rigidbody rigidbody;
+    public bool beingAttacked = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +56,8 @@ public class scrPlayerScript : MonoBehaviour
             dodge = false;
             return; //If player has used a dodge card, this blocks ANY damage from occuring this turn.
         }
+        beingAttacked = true;
+        StartCoroutine(FlashRed());
         block = block - damage;
         if (block < 0)
         {
@@ -68,6 +71,11 @@ public class scrPlayerScript : MonoBehaviour
 
        
 
+    }
+    IEnumerator FlashRed()
+    {
+        yield return new WaitForSeconds(2);
+        beingAttacked = false;
     }
 
 }

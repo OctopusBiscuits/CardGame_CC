@@ -45,6 +45,7 @@ public class scrCard : MonoBehaviour
         tick = tickmaster.GetComponent<TickMaster>();
         gameEnder = GameObject.FindWithTag("end");
         gameEnd = gameEnder.GetComponent<srGameEnd>();
+        
 
         if (cardType == "Time")
         {
@@ -105,9 +106,11 @@ public class scrCard : MonoBehaviour
         {
 
             GameObject enemy1 = realEnemyList[0];
+            enemy1.GetComponent<scrCameraShakeOnAttack>().shake();
             enemy1.GetComponent<scrEnemy>().health -= 5;
             playerScript.energy--;
             Destroy(gameObject);
+            //cameraShake.shake();
 
         }
         else if (cardType == "Precision" && playerScript.energy > 0)
@@ -144,6 +147,7 @@ public class scrCard : MonoBehaviour
             foreach (GameObject enemy in updatedEnemyList)
             {
                 enemy.GetComponent<scrEnemy>().health -= 2;
+                enemy.GetComponent<scrCameraShakeOnAttack>().shake();
             }
             playerScript.energy--;
             Destroy(gameObject);

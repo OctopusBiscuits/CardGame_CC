@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 public class scrEnemy : MonoBehaviour
 {
     public int tickCount = 4;
@@ -19,13 +20,20 @@ public class scrEnemy : MonoBehaviour
     public TextMeshProUGUI damageText;
     public TextMeshProUGUI tickText;
     public bool myGo;
+    bool amIAttacking = false;
+
     
+    //GameObject camera;
+    //scrCameraShakeOnAttack cameraShake;
     // Start is called before the first frame update
     void Start()
     {
         playerScript = player.GetComponent<scrPlayerScript>();
         tickmaster = GameObject.FindWithTag("Tick");
         tick = tickmaster.GetComponent<TickMaster>();
+        //camera = GameObject.FindWithTag("MainCamera");
+        //cameraShake = camera.GetComponent < scrCameraShakeOnAttack>(); 
+        
     }
 
     // Update is called once per frame
@@ -36,7 +44,7 @@ public class scrEnemy : MonoBehaviour
         {
             transform.Rotate(0, 0.02f * damageGiven, 0);
         }
-        tickText.text = "Tick: " + currentTick;
+        //tickText.text = "Tick: " + currentTick;
 
         if (health <= health / 2)
         {
@@ -84,7 +92,9 @@ public class scrEnemy : MonoBehaviour
                 count = 0;
             }
         }
+
         
+
 
     }
     
@@ -120,21 +130,25 @@ public class scrEnemy : MonoBehaviour
         if (Enemychoice > 30)
         {
             damageText.text = "ATTACK";
+            amIAttacking = true;
+            //cameraShake.shake();
         }
         else
         {
             damageText.text = "Increase my power";
         }
-        yield return new WaitForSeconds(2);
+        
 
         if (Enemychoice > 30)
         {
             playerScript.recieveDamage(damageGiven);
+            amIAttacking=false;
         }
         else
         {
             damageGiven += 2;
         }
+        yield return new WaitForSeconds(2);
         tick.tick = false;
         tick.enemyTurn = false;
         myGo = false;

@@ -30,14 +30,15 @@ public class scrDisplay : MonoBehaviour
             holder = pScript.playerHealth;
             holder2 = pScript.block;
             holder3 = pScript.energy;
-            int holder4 = tick.playerTick;
+            //int holder4 = tick.playerTick;
             //int holder5 = tick.enemyTick;
             healthText.text = "Health: " + holder;
             blockText.text = "Block: " + holder2;
             energyText.text = "Energy: " + holder3;
-            test1.text = "Player tick: " + holder4;
+            //test1.text = "Player tick: " + holder4;
             //test2.text = "Enemy tick: " + holder5;
 
+            /*
             if (tick.PlayerTurn)
             {
                 test1.color = Color.green;
@@ -46,7 +47,7 @@ public class scrDisplay : MonoBehaviour
             {
                 test1.color = Color.white;
             }
-            /*
+            
             if (tick.enemyTurn)
             {
                 test2.color = Color.green;
@@ -62,7 +63,7 @@ public class scrDisplay : MonoBehaviour
             healthText.text = " ";
             blockText.text = " ";
             energyText.text = " ";
-            test1.text = " ";
+            //test1.text = " ";
             //test2.text = " ";
         }
         

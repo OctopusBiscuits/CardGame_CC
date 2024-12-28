@@ -27,6 +27,7 @@ public class scrSelect : MonoBehaviour
         {
             
             thisEnemy.GetComponent<scrEnemy>().health -= 5;
+            thisEnemy.GetComponent<scrCameraShakeOnAttack>().shake();
             delete = GameObject.FindWithTag("Delete");
             Destroy(delete);
         }
