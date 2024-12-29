@@ -13,6 +13,7 @@ TagManager:
   - Selector
   - Delete
   - CurseCard
+  - instructionText
   layers:
   - Default
   - TransparentFX

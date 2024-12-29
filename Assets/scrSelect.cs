@@ -7,11 +7,12 @@ public class scrSelect : MonoBehaviour
     public bool selectMode = false;
     GameObject delete;
     public string selectedEnemy;
-
+    public GameObject text;
+    scrInstructionText iText;
     // Start is called before the first frame update
     void Start()
     {
-        
+        iText = text.GetComponent<scrInstructionText>();
     }
 
     // Update is called once per frame
@@ -29,7 +30,8 @@ public class scrSelect : MonoBehaviour
             thisEnemy.GetComponent<scrEnemy>().health -= 5;
             thisEnemy.GetComponent<scrCameraShakeOnAttack>().shake();
             delete = GameObject.FindWithTag("Delete");
-            Destroy(delete);
+            delete.GetComponent<scrCard>().discardCard(true);
+            iText.cardsDrawn();
         }
         else
         {
