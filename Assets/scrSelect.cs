@@ -27,7 +27,7 @@ public class scrSelect : MonoBehaviour
         if (selectMode)
         {
             
-            thisEnemy.GetComponent<scrEnemy>().health -= 5;
+            thisEnemy.GetComponent<scrEnemy>().TakeDamage(5);
             thisEnemy.GetComponent<scrCameraShakeOnAttack>().shake();
             delete = GameObject.FindWithTag("Delete");
             delete.GetComponent<scrCard>().discardCard(true);

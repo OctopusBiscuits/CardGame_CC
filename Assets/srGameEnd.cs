@@ -61,6 +61,15 @@ public class srGameEnd : MonoBehaviour
         {
             text.text = "Battle over. You won!!!!!";
             scrLocationManager.Instance.unlockedLevels.Add(2);
+            if (SceneManager.GetActiveScene().name == "CardTest")
+            {
+                SceneManager.LoadScene(7);
+            }
+            else
+            {
+                SceneManager.LoadScene(8);
+            }
+            
         }
         else
         {

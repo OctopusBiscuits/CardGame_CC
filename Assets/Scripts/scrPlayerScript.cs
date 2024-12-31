@@ -15,10 +15,14 @@ public class scrPlayerScript : MonoBehaviour
     public srGameEnd gameEnd;
     private Rigidbody rigidbody;
     public bool beingAttacked = false;
+    private scrHealthBar healthBar;
+    float maxHealth;
     // Start is called before the first frame update
     void Start()
     {
-        
+        healthBar = GetComponent<scrHealthBar>();
+        maxHealth = playerHealth;
+        healthBar.UpdateHealthBar(maxHealth, maxHealth);
     }
 
     // Update is called once per frame
@@ -56,6 +60,7 @@ public class scrPlayerScript : MonoBehaviour
             dodge = false;
             return; //If player has used a dodge card, this blocks ANY damage from occuring this turn.
         }
+
         beingAttacked = true;
         StartCoroutine(FlashRed());
         block = block - damage;
@@ -68,7 +73,7 @@ public class scrPlayerScript : MonoBehaviour
         {
             gameEnd.battleOver(false);
         }
-
+        healthBar.UpdateHealthBar(maxHealth, playerHealth);
        
 
     }

@@ -123,7 +123,7 @@ public class scrCard : MonoBehaviour
             
             GameObject enemy1 = realEnemyList[0];
             enemy1.GetComponent<scrCameraShakeOnAttack>().shake();
-            enemy1.GetComponent<scrEnemy>().health -= 5;
+            enemy1.GetComponent<scrEnemy>().TakeDamage(5);
             playerScript.energy--;
             discardCard(true);
             //cameraShake.shake();
@@ -163,7 +163,7 @@ public class scrCard : MonoBehaviour
             GameObject[] updatedEnemyList = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in updatedEnemyList)
             {
-                enemy.GetComponent<scrEnemy>().health -= 2;
+                enemy.GetComponent<scrEnemy>().TakeDamage(3);
                 enemy.GetComponent<scrCameraShakeOnAttack>().shake();
             }
             playerScript.energy--;

@@ -32,7 +32,7 @@ public class scrDisplay : MonoBehaviour
             holder3 = pScript.energy;
             //int holder4 = tick.playerTick;
             //int holder5 = tick.enemyTick;
-            healthText.text = "Health: " + holder;
+            healthText.text = " ";
             blockText.text = "Block: " + holder2;
             energyText.text = "Energy: " + holder3;
             //test1.text = "Player tick: " + holder4;

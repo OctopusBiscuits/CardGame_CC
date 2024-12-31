@@ -22,7 +22,10 @@ public class scrEnemy : MonoBehaviour
     public bool myGo;
     bool amIAttacking = false;
 
-    
+    public ParticleSystem deathParticles;
+    Vector3 originalSize;
+    scrHealthBar myHealthBar;
+    public int maxHealth;
     //GameObject camera;
     //scrCameraShakeOnAttack cameraShake;
     // Start is called before the first frame update
@@ -33,7 +36,11 @@ public class scrEnemy : MonoBehaviour
         tick = tickmaster.GetComponent<TickMaster>();
         //camera = GameObject.FindWithTag("MainCamera");
         //cameraShake = camera.GetComponent < scrCameraShakeOnAttack>(); 
-        
+        deathParticles.Stop();
+        originalSize = transform.localScale;
+        myHealthBar = GetComponent<scrHealthBar>();
+        maxHealth = health;
+        myHealthBar.UpdateHealthBar(maxHealth, maxHealth);
     }
 
     // Update is called once per frame
@@ -52,13 +59,16 @@ public class scrEnemy : MonoBehaviour
         }
 
         if (health <= 0)
-        {         
-            Destroy(gameObject);
+        {
+            deathParticles.Play();
+            text.text = "NOOOOO";
+            damageText.text = " ";
+            OnDeath();
         }
         
-        if (!myGo)
+        else if (!myGo)
         {
-            text.text = enemyName + ", Health : " + health;
+            text.text = enemyName;
             damageText.text = "Damage Value: " + damageGiven;
         }
         else
@@ -67,6 +77,46 @@ public class scrEnemy : MonoBehaviour
             
         }
 
+    }
+
+    public void OnDeath()
+    {
+        
+
+        StartCoroutine(EnemyDeath());
+    }
+
+    IEnumerator EnemyDeath()
+    {
+
+        Vector3 scaleUp = originalSize * 1.2f;
+        Vector3 scaleDown = originalSize * 0.05f;
+        float duration = 0.5f;
+        float timeTaken = 0f;
+        while (timeTaken < duration)
+        {
+            transform.localScale = Vector3.Lerp(originalSize, scaleUp, timeTaken / duration);
+            timeTaken += Time.deltaTime;
+            yield return null;
+        }
+        timeTaken = 0f;
+        duration = 0.7f;
+        while (timeTaken < duration)
+        {
+            transform.localScale = Vector3.Lerp(scaleUp, scaleDown, timeTaken / duration);
+            timeTaken += Time.deltaTime;
+            yield return null;
+        }
+        
+        //yield return new WaitForSeconds(2);
+        Destroy(gameObject);
+    }
+
+    public void TakeDamage(int damage)
+    {
+
+        health -= damage;
+        myHealthBar.UpdateHealthBar(maxHealth, health);
     }
 
     private void FixedUpdate()

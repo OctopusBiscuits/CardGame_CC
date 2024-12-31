@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 497295170715926247}
   - component: {fileID: 4161738910569229289}
   - component: {fileID: -3982433488742053718}
+  - component: {fileID: -7399816727550213948}
   m_Layer: 0
   m_Name: TimePrefab
   m_TagString: CurseCard
@@ -122,6 +123,20 @@ MonoBehaviour:
   cardType: Time
   tick: {fileID: 0}
   realEnemyList: []
+  cardPlayed: 0
+--- !u!114 &-7399816727550213948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7316583997877312358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c129eb86282ae742a31c59544558733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  count: 0
 --- !u!1 &8595489430126109968
 GameObject:
   m_ObjectHideFlags: 0
