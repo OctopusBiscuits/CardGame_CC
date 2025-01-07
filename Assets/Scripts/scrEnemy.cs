@@ -173,7 +173,7 @@ public class scrEnemy : MonoBehaviour
 
         //float go = Random.Range(0.0f, 2.0f);
 
-        int Enemychoice = Random.Range(0, 100);
+        int Enemychoice = Random.Range(0, 100); //Random rolled
         Debug.Log("Joshcube rolled a " +Enemychoice);
 
         // If Enemychoice is above [Set integer] the enemy will announce that it will strike you down before dealing [Set integer] to player
@@ -191,15 +191,15 @@ public class scrEnemy : MonoBehaviour
 
         if (Enemychoice > 30)
         {
-            playerScript.recieveDamage(damageGiven);
+            playerScript.recieveDamage(damageGiven); //Reduce players health
             amIAttacking=false;
         }
         else
         {
             damageGiven += 2;
         }
-        yield return new WaitForSeconds(2);
-        tick.tick = false;
+        yield return new WaitForSeconds(2); //Time for player to read the enemy's text
+        tick.tick = false; //Reset tick 
         tick.enemyTurn = false;
         myGo = false;
     }

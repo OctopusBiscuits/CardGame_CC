@@ -118,7 +118,7 @@ public class scrCard : MonoBehaviour
             return; //This ensures that if the player has clicked a precision card and is choosing an enemy to attack, they cannot use any other cards
         }
         Debug.Log("This is a test");
-        if (cardType == "Precision" && playerScript.energy > 0 && GameObject.FindGameObjectsWithTag("Enemy").Length < 2)
+        if (cardType == "Precision" && playerScript.energy > 0 && GameObject.FindGameObjectsWithTag("Enemy").Length < 2) //Only one enemy in the scene
         {
             
             GameObject enemy1 = realEnemyList[0];
