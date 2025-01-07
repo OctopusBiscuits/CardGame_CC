@@ -65,6 +65,7 @@ public class TickMaster : MonoBehaviour
             
             if (playerTick >= 10) //Player's turn
             {
+                scrPlayer.dodge = false;
                 scrPlayer.block = 0;
                 tick = false;
                 Debug.Log("Player can now go");
