@@ -46,24 +46,24 @@ public class TickMaster : MonoBehaviour
             timeToTick = 1;
             //Debug.Log("Ticking");
         }
-        //Debug.Log(timeToTick);
+        
+        //This increases the player and enemies tick counts  (if it is not the enemy/player's turn to attack)
         if (tick && !PlayerTurn && !enemyTurn)
         {
             
             timeToTick = 1;
             
-            if (!activeTimeBlindness)
+            if (!activeTimeBlindness) //Check player does not suffer from time blindness
             {
                 playerTick += playerIncrease;
             }
             else
             {
-                Debug.Log("It worked");
                 activeTimeBlindness = false;
             }
             
             
-            if (playerTick >= 10)
+            if (playerTick >= 10) //Player's turn
             {
                 scrPlayer.block = 0;
                 tick = false;
@@ -79,22 +79,8 @@ public class TickMaster : MonoBehaviour
                 //break;
                 
             }
-            /*
-            if (GameObject.FindGameObjectsWithTag("Enemy").Length < 2)
-            {
-                enemyTick += enemyIncrease;
-                if (enemyTick >= 10 && !PlayerTurn)
-                {
-                    tick = false;
-                    Debug.Log("Enemy can now go");
-                    enemyTick = 0;
-                    enemyTurn = true;
-                    joshScript.MyTurn();
-                    //break;
-                }
-            }
-            */
-            if (GameObject.FindGameObjectsWithTag("Enemy").Length > 0 )
+            
+            if (GameObject.FindGameObjectsWithTag("Enemy").Length > 0 ) //Enemies turn
             {
                 foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
                 {
