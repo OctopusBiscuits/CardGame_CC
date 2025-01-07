@@ -111,10 +111,10 @@ public class scrDeck : MonoBehaviour
     {
         curseinDeck = false;
         int numCardsDrawn = 0;
-        Vector3 endturnpos = new Vector3(5.2f, 0.0f, 0.0f);
+        Vector3 endturnpos = new Vector3(7f, 0.0f, 0.0f);
         while (numCardsDrawn < 5)
         {
-            Vector3 newPos = new Vector3(8.0f - (3.5f * numCardsDrawn), -3.0f, 0.0f);
+            Vector3 newPos = new Vector3(7.0f - (3.5f * numCardsDrawn), -3f, 0.0f);
             
             if (shuffledDeck.Peek() == 1)
             {

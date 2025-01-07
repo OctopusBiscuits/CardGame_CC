@@ -53,7 +53,7 @@ public class scrPlayerScript : MonoBehaviour
         //Then health
         if (dodge)
         {
-            dodge = false;
+            //dodge = false;
             return; //If player has used a dodge card, this blocks ANY damage from occuring this turn.
         }
         beingAttacked = true;

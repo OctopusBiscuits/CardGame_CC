@@ -21,15 +21,15 @@ public class scrJoshIntro : MonoBehaviour
         //Debug.Log(count);
         if (count < 1)
         {
-            textMeshPro.text = "Josh has appeared...";
+            textMeshPro.text = "As you were trying to pogress forward, an odd cube showed to block your way forward..";
         }
         else if (count < 2)
         {
-            textMeshPro.text = "He isn't happy to see you.";
+            textMeshPro.text = "All your attempts to walk around them seems to have left them agitated..  .";
         }
         else if (count < 3)
         {
-            textMeshPro.text = "He wants to fight!";
+            textMeshPro.text = "It seems like the only way past them now is fighting your way through!!";
         }
         else
         {

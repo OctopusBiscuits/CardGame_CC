@@ -129,6 +129,7 @@ public class scrCard : MonoBehaviour
             //cameraShake.shake();
 
         }
+
         else if (cardType == "Precision" && playerScript.energy > 0)
         {
             //Select enemy
@@ -170,7 +171,7 @@ public class scrCard : MonoBehaviour
             discardCard(true);
         }
 
-        else if (cardType == "Dodge" && playerScript.energy > 0)
+        else if (cardType == "Dodge" && playerScript.energy > 1)
         {
             playerScript.dodge = true;
             playerScript.energy--;
