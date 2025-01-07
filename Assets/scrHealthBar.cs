@@ -21,6 +21,10 @@ public class scrHealthBar : MonoBehaviour
 
     public void UpdateHealthBar(float fullHeatlh, float currentHealth)
     {
+        if (currentHealth < 0)
+        {
+            currentHealth = 0;
+        }
         target = currentHealth / fullHeatlh;
         healthText.text = currentHealth + "/" + fullHeatlh;
 
