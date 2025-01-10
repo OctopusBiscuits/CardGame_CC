@@ -16,8 +16,12 @@ public class scrDeck : MonoBehaviour
     public GameObject misplaceCard;
     public GameObject end;
     public GameObject sweepCard;
+    public GameObject strengthCard;
+    public GameObject medCard;
     float test = 2;
     bool multipleEnemies;
+    public GameObject player;
+    scrPlayerScript scrPlayerScript;
     /*
     public int precCount = 4;
     public int bloCount = 4;
@@ -45,7 +49,7 @@ public class scrDeck : MonoBehaviour
         {
             multipleEnemies = false;
         }
-
+        scrPlayerScript = player.GetComponent<scrPlayerScript>();
         DeckShuffle();
         printDeck();
     }
@@ -77,6 +81,8 @@ public class scrDeck : MonoBehaviour
         theDeck.Add(4);
         theDeck.Add(5);
         theDeck.Add(6);
+        theDeck.Add(8);
+        theDeck.Add(9);
         if (multipleEnemies)
         {
             theDeck.Add(7);
@@ -109,13 +115,14 @@ public class scrDeck : MonoBehaviour
 
     public void drawCards()
     {
+        DeckShuffle();
         curseinDeck = false;
         int numCardsDrawn = 0;
         Vector3 endturnpos = new Vector3(10f, -3.0f, 0.0f);
         while (numCardsDrawn < 5)
         {
             Vector3 newPos = new Vector3(7.0f - (3.5f * numCardsDrawn), -3.8f, 0.0f);
-            
+
             if (shuffledDeck.Peek() == 1)
             {
                 GameObject card = Instantiate(precCard, newPos, Quaternion.identity);
@@ -136,23 +143,83 @@ public class scrDeck : MonoBehaviour
             }
             else if (shuffledDeck.Peek() == 4)
             {
-                GameObject card = Instantiate(restCard, newPos, Quaternion.identity);
-                shuffledDeck.Dequeue();
-                numCardsDrawn++;
+                if (scrPlayerScript.medicated > 0)
+                {
+                    int random = Random.Range(0, 100);
+                    if (random >= 50)
+                    {
+                        Debug.Log("meds worked ");
+                        shuffledDeck.Dequeue();
+                    }
+                    else
+                    {
+                        GameObject card = Instantiate(restCard, newPos, Quaternion.identity);
+                        curseinDeck = true;
+                        shuffledDeck.Dequeue();
+                        numCardsDrawn++;
+                    }
+                }
+                else
+                {
+                    GameObject card = Instantiate(restCard, newPos, Quaternion.identity);
+                    curseinDeck = true;
+                    shuffledDeck.Dequeue();
+                    numCardsDrawn++;
+                }
             }
             else if (shuffledDeck.Peek() == 5)
             {
-                GameObject card = Instantiate(timeCard, newPos, Quaternion.identity);
-                curseinDeck = true;
-                shuffledDeck.Dequeue();
-                numCardsDrawn++;
+                
+                if (scrPlayerScript.medicated > 0)
+                {
+                    int random = Random.Range(0, 100);
+                    if (random >= 50)
+                    {
+                        Debug.Log("Meds workde");                  
+                        shuffledDeck.Dequeue();
+                    }
+                    else
+                    {
+                        GameObject card = Instantiate(timeCard, newPos, Quaternion.identity);
+                        curseinDeck = true;
+                        shuffledDeck.Dequeue();
+                        numCardsDrawn++;
+                    }
+                }
+                else
+                {
+                    GameObject card = Instantiate(timeCard, newPos, Quaternion.identity);
+                    curseinDeck = true;
+                    shuffledDeck.Dequeue();
+                    numCardsDrawn++;
+                }
+                
             }
-            else if (shuffledDeck.Peek() == 6 )
+            else if (shuffledDeck.Peek() == 6)
             {
-                GameObject card = Instantiate(misplaceCard, newPos, Quaternion.identity);
-                curseinDeck = true;
-                shuffledDeck.Dequeue();
-                numCardsDrawn++;
+                if (scrPlayerScript.medicated > 0)
+                {
+                    int random = Random.Range(0, 100);
+                    if (random >= 50)
+                    {
+                        Debug.Log("meds worked ");
+                        shuffledDeck.Dequeue();
+                    }
+                    else
+                    {
+                        GameObject card = Instantiate(misplaceCard, newPos, Quaternion.identity);
+                        curseinDeck = true;
+                        shuffledDeck.Dequeue();
+                        numCardsDrawn++;
+                    }
+                }
+                else
+                {
+                    GameObject card = Instantiate(misplaceCard, newPos, Quaternion.identity);
+                    curseinDeck = true;
+                    shuffledDeck.Dequeue();
+                    numCardsDrawn++;
+                }
             }
             else if (shuffledDeck.Peek() == 7)
             {
@@ -160,6 +227,19 @@ public class scrDeck : MonoBehaviour
                 shuffledDeck.Dequeue();
                 numCardsDrawn++;
             }
+            else if (shuffledDeck.Peek() == 8)
+            {
+                GameObject card = Instantiate(strengthCard, newPos, Quaternion.identity);
+                shuffledDeck.Dequeue();
+                numCardsDrawn++;
+            }
+            else if (shuffledDeck.Peek() == 9)
+            {
+                GameObject card = Instantiate(medCard, newPos, Quaternion.identity);
+                shuffledDeck.Dequeue();
+                numCardsDrawn++;
+            }
+            
             
         }
 

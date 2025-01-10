@@ -21,6 +21,7 @@ public class scrEnemy : MonoBehaviour
     public TextMeshProUGUI tickText;
     public bool myGo;
     bool amIAttacking = false;
+    public int chanceToAttack = 70;
 
     public ParticleSystem deathParticles;
     Vector3 originalSize;
@@ -177,7 +178,7 @@ public class scrEnemy : MonoBehaviour
         Debug.Log("Joshcube rolled a " +Enemychoice);
 
         // If Enemychoice is above [Set integer] the enemy will announce that it will strike you down before dealing [Set integer] to player
-        if (Enemychoice > 30)
+        if (Enemychoice > 100 - chanceToAttack)
         {
             damageText.text = "ATTACK";
             amIAttacking = true;
@@ -186,10 +187,11 @@ public class scrEnemy : MonoBehaviour
         else
         {
             damageText.text = "Increase my power";
+            StartCoroutine(cardScaling());
         }
         
 
-        if (Enemychoice > 30)
+        if (Enemychoice > 100 - chanceToAttack)
         {
             playerScript.recieveDamage(damageGiven); //Reduce players health
             amIAttacking=false;
@@ -208,5 +210,28 @@ public class scrEnemy : MonoBehaviour
     {
 
         Debug.Log("Button pressed");
+    }
+
+    IEnumerator cardScaling()
+    {
+        Vector3 scaleUp = originalSize * 1.9f;
+        Vector3 scaleDown = originalSize;
+        float duration = 0.3f;
+        float timeTaken = 0f;
+        while (timeTaken < duration)
+        {
+            transform.localScale = Vector3.Lerp(originalSize, scaleUp, timeTaken / duration);
+            timeTaken += Time.deltaTime;
+            yield return null;
+        }
+        timeTaken = 0f;
+        while (timeTaken < duration)
+        {
+            transform.localScale = Vector3.Lerp(scaleUp, scaleDown, timeTaken / duration);
+            timeTaken += Time.deltaTime;
+            yield return null;
+        }
+        
+
     }
 }

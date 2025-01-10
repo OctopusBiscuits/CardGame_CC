@@ -10,6 +10,7 @@ public class scrPlayerScript : MonoBehaviour
     public int tickCount = 4;
     public int howCloseToTurn = 0;
     public int energy = 3;
+    public int damageIncrease = 0;
     public Camera camera;
     public bool dodge = false;
     public srGameEnd gameEnd;
@@ -17,9 +18,11 @@ public class scrPlayerScript : MonoBehaviour
     public bool beingAttacked = false;
     private scrHealthBar healthBar;
     float maxHealth;
+    public int medicated = 0;
     // Start is called before the first frame update
     void Start()
     {
+        medicated = 0;
         healthBar = GetComponent<scrHealthBar>();
         maxHealth = playerHealth;
         healthBar.UpdateHealthBar(maxHealth, maxHealth);

@@ -120,10 +120,10 @@ public class scrCard : MonoBehaviour
         Debug.Log("This is a test");
         if (cardType == "Precision" && playerScript.energy > 0 && GameObject.FindGameObjectsWithTag("Enemy").Length < 2) //Only one enemy in the scene
         {
-            
+
             GameObject enemy1 = realEnemyList[0];
             enemy1.GetComponent<scrCameraShakeOnAttack>().shake();
-            enemy1.GetComponent<scrEnemy>().TakeDamage(5);
+            enemy1.GetComponent<scrEnemy>().TakeDamage(5 + playerScript.damageIncrease);
             playerScript.energy--;
             discardCard(true);
             //cameraShake.shake();
@@ -164,16 +164,29 @@ public class scrCard : MonoBehaviour
             GameObject[] updatedEnemyList = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in updatedEnemyList)
             {
-                enemy.GetComponent<scrEnemy>().TakeDamage(3);
+                enemy.GetComponent<scrEnemy>().TakeDamage(3 + playerScript.damageIncrease);
                 enemy.GetComponent<scrCameraShakeOnAttack>().shake();
             }
             playerScript.energy--;
             discardCard(true);
         }
 
-        else if (cardType == "Dodge" && playerScript.energy > 1)
+        else if (cardType == "Dodge" && playerScript.energy >= 2)
         {
             playerScript.dodge = true;
+            playerScript.energy--;
+            playerScript.energy--;
+            discardCard(true);
+        }
+        else if (cardType == "Strength" && playerScript.energy == 3)
+        {
+            playerScript.damageIncrease += 2;
+            playerScript.energy -= 3;
+            discardCard(true);
+        }
+        else if (cardType == "Meds" && playerScript.energy >= 1)
+        {
+            playerScript.medicated = 3;
             playerScript.energy--;
             discardCard(true);
         }
@@ -183,6 +196,10 @@ public class scrCard : MonoBehaviour
             tick.PlayerTurn = false;
             tick.tick = true;
             tick.first = true;
+            if (playerScript.medicated > 0)
+            {
+                playerScript.medicated--;
+            }
             GameObject[] cursecards = GameObject.FindGameObjectsWithTag("CurseCard");
             foreach (GameObject card in cursecards)
             {
@@ -198,6 +215,7 @@ public class scrCard : MonoBehaviour
             
             Destroy(gameObject);
         }
+
         
     }
 

@@ -9,6 +9,7 @@ public class scrDisplay : MonoBehaviour
     public TextMeshProUGUI blockText;
     public TextMeshProUGUI energyText;
     public TextMeshProUGUI test1;
+    public TextMeshProUGUI meds;
     //public TextMeshProUGUI test2;
     [SerializeField] scrPlayerScript pScript;
     [SerializeField] TickMaster tick;
@@ -57,6 +58,14 @@ public class scrDisplay : MonoBehaviour
                 test2.color = Color.white;
             }
             */
+            if (pScript.medicated > 0)
+            {
+                meds.text = "Medicated";
+            }
+            else
+            {
+                meds.text = "Not medicated";
+            }
         }
         else
         {
