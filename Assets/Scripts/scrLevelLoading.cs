@@ -43,4 +43,8 @@ public class scrLevelLoading : MonoBehaviour
             SceneManager.LoadScene(4);
         }
     }
+    public void spell()
+    {
+        SceneManager.LoadScene(9);
+    }
 }

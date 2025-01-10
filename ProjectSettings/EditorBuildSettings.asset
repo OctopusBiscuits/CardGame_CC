@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/End.unity
     guid: dd67444e7d720f146a416b58454f8cf1
+  - enabled: 1
+    path: Assets/Scenes/SpellBook.unity
+    guid: 22bc7f5e1ae766948bf837796125d989
   m_configObjects: {}
