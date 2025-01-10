@@ -114,7 +114,7 @@ public class scrDeck : MonoBehaviour
         Vector3 endturnpos = new Vector3(10f, -3.0f, 0.0f);
         while (numCardsDrawn < 5)
         {
-            Vector3 newPos = new Vector3(7.0f - (3.5f * numCardsDrawn), -3f, 0.0f);
+            Vector3 newPos = new Vector3(7.0f - (3.5f * numCardsDrawn), -3.8f, 0.0f);
             
             if (shuffledDeck.Peek() == 1)
             {

@@ -59,7 +59,7 @@ public class srGameEnd : MonoBehaviour
         gameOver = true;
         if (playerWin)
         {
-            text.text = "Battle over. You won!!!!!";
+            text.text = "The path is now clear! Good work!";
             scrLocationManager.Instance.unlockedLevels.Add(2);
             if (SceneManager.GetActiveScene().name == "CardTest")
             {
@@ -73,7 +73,7 @@ public class srGameEnd : MonoBehaviour
         }
         else
         {
-            text.text = "Battle over. You were defeated";
+            text.text = "And so, the battle has ended along with your road forward..  Game Over";
         }
         StartCoroutine(pause());
     }
