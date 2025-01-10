@@ -104,6 +104,10 @@ public class scrSpellBook : MonoBehaviour
             text.text = "This is your ADHD medication. Taking this makes ADHD symptoms less likely to occur for three turns. However, this has a side effect of fatigue: rest cards are less likely to be drawn";
             card9 = Instantiate(meds, cardLocation, Quaternion.identity);
         }
+        else if (count == 9)
+        {
+            text.text = "Here's how the turn system works. As you have ADHD, this is not a turn based system - You often lose track of time. Every second, you and the enemies tick up a set value. Once this value hits 10, it is your turn. You always take your turn before the enemy (if both have tick of 10)";
+        }
         else
         {
             SceneManager.LoadScene(1);
