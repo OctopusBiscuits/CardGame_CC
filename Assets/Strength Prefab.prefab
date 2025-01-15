@@ -239,7 +239,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Energy: 3
+  m_text: 'Energy: 2
 
 '
   m_isRightToLeft: 0

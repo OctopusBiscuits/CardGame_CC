@@ -152,7 +152,7 @@ public class scrCard : MonoBehaviour
         }
 
         // Allows the character to practice their breathing exercises, restoring one energy to their bar
-        else if (cardType == "Rest")
+        else if (cardType == "Rest" && playerScript.energy < 3)
         {
             playerScript.energy += 1;
             discardCard(true);
@@ -178,10 +178,10 @@ public class scrCard : MonoBehaviour
             playerScript.energy--;
             discardCard(true);
         }
-        else if (cardType == "Strength" && playerScript.energy == 3)
+        else if (cardType == "Strength" && playerScript.energy >= 2)
         {
             playerScript.damageIncrease += 2;
-            playerScript.energy -= 3;
+            playerScript.energy -= 2;
             discardCard(true);
         }
         else if (cardType == "Meds" && playerScript.energy >= 1)

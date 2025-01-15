@@ -48,9 +48,9 @@ public class scrEnemy : MonoBehaviour
     void Update()
     {
         //As Josh gets stronger, the rotation speed increases
-        if (enemyName == "josh")
+        if (enemyName == "Josh")
         {
-            transform.Rotate(0, 0.02f * damageGiven, 0);
+            transform.Rotate(0, 0.04f * damageGiven, 0);
         }
         //tickText.text = "Tick: " + currentTick;
 
